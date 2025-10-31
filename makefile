@@ -1,6 +1,6 @@
 CC=gcc
 CFLAGS=-Wall -g
-BINS=test.out shim.so shim2.so main.out
+BINS=test.out shim.so shim-old.so loader.out
 
 all: $(BINS)
 
