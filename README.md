@@ -40,6 +40,7 @@ This sets `LD_PRELOAD` automatically and injects the tracer into your target pro
 ## Components Overview
 
 | File             | Description                                                       |
+| ---------------- | ----------------------------------------------------------------- |
 | **`loader.c`**   | Wrapper that sets up `LD_PRELOAD` and executes the target binary. |
 | **`shim.c`**     | Core tracer implementation with a linked-list memory tracker.     |
 | **`shim-old.c`** | Legacy version using a static array instead of a linked list.     |
