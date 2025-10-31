@@ -8,7 +8,7 @@ int main(int argc, char** argv) {
 		printf("usage: %s <executable>\n", argv[0]);
 		return EXIT_FAILURE;
 	}
-    const char* shim = "./shim2.so";
+    const char* shim = "./shim.so";
     const char* var = "LD_PRELOAD";
 	setenv(var, shim, 1);
 	pid_t child = fork();
