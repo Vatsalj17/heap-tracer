@@ -115,10 +115,6 @@ memory_block* find_ptr(void* ptr) {
 
 void* malloc(size_t size) {
 	char buffer[BUF_SIZE];
-	if (real_malloc == NULL) {
-		write(1, "dlsym failed!\n", 15);
-		return NULL;
-	}
 	void* ptr = real_malloc(size);
 	memory_block* block = create_block(ptr, size);
 	insert_block(block);
@@ -131,10 +127,6 @@ void* malloc(size_t size) {
 
 void* calloc(size_t n, size_t size) {
 	char buffer[BUF_SIZE];
-	if ((real_calloc = dlsym(RTLD_NEXT, "calloc")) == NULL) {
-		perror("dlsym");
-		return NULL;
-	}
 	size_t memsize = n * size;
 	void* ptr = real_calloc(n, size);
 	memory_block* block = create_block(ptr, size);
@@ -148,10 +140,6 @@ void* calloc(size_t n, size_t size) {
 
 void* realloc(void* ptr, size_t size) {
 	char buffer[BUF_SIZE];
-	if ((real_realloc = dlsym(RTLD_NEXT, "realloc")) == NULL) {
-		perror("dlsym");
-		return NULL;
-	}
 	void* new = real_realloc(ptr, size);
 	memory_block* block = find_ptr(ptr);
 	if (block == NULL) {
