@@ -3,7 +3,6 @@
 It is a lightweight runtime memory allocation tracker for C programs, built using the `LD_PRELOAD` mechanism.
 It intercepts standard allocation functions like `malloc`, `calloc`, `realloc`, and `free` to monitor heap activity and spot memory leaks in real time.
 
----
 
 ## How It Works
 
@@ -17,7 +16,6 @@ When your program exits, a destructor function automatically prints a **Heap Sum
 
 In short — it keeps tabs on your heap so you can catch leaks before they catch you.
 
----
 
 ## Building
 
@@ -27,7 +25,6 @@ make
 
 This will build all the components — the shared library (`shim.so`) and the loader (`loader.out`).
 
----
 
 ## Usage
 
@@ -39,18 +36,15 @@ To trace any executable, simply run it through the loader:
 
 This sets `LD_PRELOAD` automatically and injects the tracer into your target program.
 
----
 
 ## Components Overview
 
 | File             | Description                                                       |
-| ---------------- | ----------------------------------------------------------------- |
 | **`loader.c`**   | Wrapper that sets up `LD_PRELOAD` and executes the target binary. |
 | **`shim.c`**     | Core tracer implementation with a linked-list memory tracker.     |
 | **`shim-old.c`** | Legacy version using a static array instead of a linked list.     |
 | **`test.c`**     | Sample program to test allocation, freeing, and leak detection.   |
 
----
 
 ## Cleaning Up
 
@@ -58,7 +52,6 @@ This sets `LD_PRELOAD` automatically and injects the tracer into your target pro
 make clean
 ```
 
----
 
 ## Why This Exists
 
